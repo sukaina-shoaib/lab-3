@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova - Modern Website</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            color: #635bff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #555;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #635bff;
+        }
+
+        .nav-btn {
+            background: #635bff;
+            color: white !important;
+            padding: 11px 20px;
+            border-radius: 8px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 80% 20%, #dcd9ff 0, transparent 28%),
+                linear-gradient(135deg, #f8f9ff, #ffffff);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ecebff;
+            color: #635bff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #635bff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #687083;
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #635bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5048e5;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #ddd;
+            background: white;
+        }
+
+        .btn-outline:hover {
+            border-color: #635bff;
+            color: #635bff;
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #747b8c;
+        }
+
+        /* ================= SERVICES ================= */
+
+        .services {
+            background: #fafbff;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 40px rgba(30, 30, 80, 0.08);
+        }
+
+        .icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ecebff;
+            color: #635bff;
+            border-radius: 12px;
+            font-size: 25px;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #747b8c;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            min-height: 420px;
+            border-radius: 25px;
+            background:
+                linear-gradient(135deg, rgba(99,91,255,.8), rgba(50,45,150,.9)),
+                #635bff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 100px;
+            box-shadow: 0 25px 60px rgba(99,91,255,.25);
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: #747b8c;
+            margin-bottom: 20px;
+        }
+
+        .features {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .features li {
+            margin-bottom: 13px;
+            font-weight: 600;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #635bff;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* ================= PRICING ================= */
+
+        .pricing {
+            background: #fafbff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .price-card {
+            background: white;
+            border: 1px solid #e8e8ee;
+            border-radius: 18px;
+            padding: 35px;
+            position: relative;
+        }
+
+        .price-card.popular {
+            border: 2px solid #635bff;
+            transform: scale(1.03);
+        }
+
+        .popular-label {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #635bff;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .price-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 15px;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .price-features li {
+            padding: 9px 0;
+            color: #687083;
+        }
+
+        /* ================= TESTIMONIALS ================= */
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 15px;
+        }
+
+        .stars {
+            color: #ffb400;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            color: #687083;
+            margin-bottom: 20px;
+        }
+
+        .person {
+            font-weight: bold;
+        }
+
+        .person small {
+            display: block;
+            color: #888;
+            font-weight: normal;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            background: #172033;
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .contact h2 {
+            font-size: 43px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #aeb5c4;
+            margin-bottom: 25px;
+        }
+
+        .contact-info div {
+            margin: 15px 0;
+            color: #d8dce5;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #635bff;
+        }
+
+        form .btn {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #101625;
+            color: #8891a3;
+            padding: 25px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: #635bff;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+            }
+
+            .service-grid,
+            .pricing-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .price-card.popular {
+                transform: none;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                height: auto;
+                padding: 20px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-btn {
+                display: none;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2,
+            .about-content h2,
+            .contact h2 {
+                font-size: 32px;
+            }
+
+            .about-image {
+                min-height: 300px;
+                font-size: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">NOVA.</a>
+
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <a href="#contact" class="nav-btn">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+
+                <div class="badge">✨ Build something amazing</div>
+
+                <h1>
+                    We create digital
+                    <span>experiences.</span>
+                </h1>
+
+                <p>
+                    Nova helps ambitious businesses build beautiful,
+                    modern and powerful digital experiences that people love.
+                </p>
+
+                <div class="buttons">
+                    <a href="#services" class="btn btn-primary">
+                        Explore Services →
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Contact Us
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>What We Do</h2>
+                <p>
+                    Everything you need to create a strong and memorable
+                    digital presence.
+                </p>
+            </div>
+
+            <div class="service-grid">
+
+                <div class="card">
+                    <div class="icon">✦</div>
+                    <h3>Web Design</h3>
+                    <p>
+                        Beautiful and responsive websites designed to
+                        impress your visitors and grow your business.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">◈</div>
+                    <h3>Branding</h3>
+                    <p>
+                        Create a powerful visual identity that makes
+                        your business recognizable and memorable.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">⚡</div>
+                    <h3>Development</h3>
+                    <p>
+                        Fast, clean and reliable digital experiences
+                        built with modern web technologies.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-image">
+                    ◉
+                </div>
+
+                <div class="about-content">
+
+                    <div class="badge">ABOUT NOVA</div>
+
+                    <h2>Turning ideas into reality.</h2>
+
+                    <p>
+                        We believe great design should be simple,
+                        useful and beautiful. Our team combines creativity
+                        and technology to create experiences that matter.
+                    </p>
+
+                    <p>
+                        From a simple landing page to a complete digital
+                        platform, we focus on creating products that help
+                        businesses move forward.
+                    </p>
+
+                    <ul class="features">
+                        <li>Modern and responsive design</li>
+                        <li>Fast and optimized websites</li>
+                        <li>Simple and intuitive experiences</li>
+                        <li>Focused on your business goals</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Simple Pricing</h2>
+                <p>
+                    Choose a plan that fits your needs.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+
+                <div class="price-card">
+
+                    <h3>Starter</h3>
+
+                    <p>For individuals and small projects.</p>
+
+                    <div class="price">
+                        $29 <span>/ month</span>
+                    </div>
+
+                    <ul class="price-features">
+                        <li>✓ 1 Website</li>
+                        <li>✓ Basic Support</li>
+                        <li>✓ Responsive Design</li>
+                        <li>✓ SSL Certificate</li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Get Started
+                    </a>
+
+                </div>
+
+
+                <div class="price-card popular">
+
+                    <div class="popular-label">
+                        MOST POPULAR
+                    </div>
+
+                    <h3>Professional</h3>
+
+                    <p>For growing businesses.</p>
+
+                    <div class="price">
+                        $79 <span>/ month</span>
+                    </div>
+
+                    <ul class="price-features">
+                        <li>✓ 5 Websites</li>
+                        <li>✓ Priority Support</li>
+                        <li>✓ Advanced Design</li>
+                        <li>✓ Analytics</li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-primary">
+                        Get Started
+                    </a>
+
+                </div>
+
+
+                <div class="price-card">
+
+                    <h3>Business</h3>
+
+                    <p>For established businesses.</p>
+
+                    <div class="price">
+                        $149 <span>/ month</span>
+                    </div>
+
+                    <ul class="price-features">
+                        <li>✓ Unlimited Websites</li>
+                        <li>✓ Premium Support</li>
+                        <li>✓ Custom Design</li>
+                        <li>✓ Advanced Analytics</li>
+                    </ul>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Get Started
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+    <section>
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>What People Say</h2>
+                <p>
+                    Trusted by businesses and creative teams.
+                </p>
+            </div>
+
+            <div class="testimonial-grid">
+
+                <div class="testimonial">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Nova completely transformed our website.
+                        It looks incredible and our customers love it."
+                    </p>
+
+                    <div class="person">
+                        Sarah Johnson
+                        <small>Founder, Creative Co.</small>
+                    </div>
+
+                </div>
+
+
+                <div class="testimonial">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Professional, creative and incredibly easy
+                        to work with. Highly recommended."
+                    </p>
+
+                    <div class="person">
+                        Michael Smith
+                        <small>CEO, TechFlow</small>
+                    </div>
+
+                </div>
+
+
+                <div class="testimonial">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "Our new website feels modern and premium.
+                        Exactly what we wanted."
+                    </p>
+
+                    <div class="person">
+                        Emily Davis
+                        <small>Director, Studio 24</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div>
+
+                    <div class="badge">
+                        LET'S TALK
+                    </div>
+
+                    <h2>
+                        Have a project in mind?
+                    </h2>
+
+                    <p>
+                        Tell us about your idea and let's create
+                        something amazing together.
+                    </p>
+
+                    <div class="contact-info">
+                        <div>📧 hello@nova.com</div>
+                        <div>📞 +1 234 567 890</div>
+                        <div>📍 New York, USA</div>
+                    </div>
+
+                </div>
+
+
+                <form>
+
+                    <input
+                        type="text"
+                        placeholder="Your Name"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        placeholder="Your Email"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        placeholder="Subject"
+                    >
+
+                    <textarea
+                        placeholder="Tell us about your project..."
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                    >
+                        Send Message →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            © 2026 <span>NOVA</span>. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
